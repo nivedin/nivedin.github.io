@@ -1,0 +1,1096 @@
+@import url('https://fonts.googleapis.com/css2?family=B612&family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    text-decoration: none;
+    font-size: 18px;
+    cursor: none;
+}
+html{
+    height: 100%;
+}
+
+body{
+    background: rgb(247, 247, 247) !important;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+.stopScroll{
+    overflow: hidden;
+}
+/* Hide scrollbar for Chrome, Safari and Opera */
+body::-webkit-scrollbar {
+    display: none;
+}
+
+.transOverlay{
+    position: absolute;
+    z-index: 95;
+    width: 100%;
+    height: 100%;
+    background: rgb(9, 25, 253);
+    left: 0;
+    top: 0;
+}
+
+.cursor{
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    pointer-events: none;
+    z-index: 999;
+    backdrop-filter: invert(100%);
+}
+.cursor2{
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    pointer-events: none;
+    z-index: 998;
+    background: black;
+    transition-duration: 400ms;
+    transition-timing-function: ease-out;
+    animation: cursorAnim .5s infinite alternate;
+}
+
+@keyframes cursorAnim {
+
+    from{
+        transform: scale(1);
+        background: black;
+    }
+    to{
+        transform: scale(.7);
+        background: rgb(32, 8, 255);
+    }
+}
+
+.mouseLinkEntered{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 2rem;
+    height: 2rem;
+    font-weight: 600;
+    color: black;
+    border-radius: 50%;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    pointer-events: none;
+    z-index: 999;
+    background: white;
+    opacity: .9;
+    animation: .3s enteredAnim forwards;
+}
+.mouseEntered{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 6rem;
+    height: 6rem;
+    font-weight: 600;
+    color: black;
+    border-radius: 50%;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    pointer-events: none;
+    z-index: 999;
+    background: white;
+    animation: .5s enteredAnim forwards;
+}
+
+@keyframes enteredAnim {
+
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+
+
+.header{
+    height: 40vh;
+    background: rgb(247, 247, 247);
+    width: 100%;
+
+
+    nav{
+        width: 100%;
+        height: 100%;
+    }
+
+    .wrapper{
+        position: relative;
+        padding: 15vh 30vh;
+    }
+
+    .navName{
+        position: absolute;
+        top: 60px;
+        left: 10%;
+        
+
+        a{
+            color: black;
+            text-decoration: none !important;
+            font-size: 4rem !important;
+        }
+
+        span{
+            color: blue;
+            font-size: 4rem;
+        }
+    }
+
+    .navButton{
+        position: absolute;
+        z-index: 999;
+        top:50%;
+        left: 87%;
+        cursor: pointer;
+        transition: all 1s ease-in-out;
+
+        div{
+            margin-bottom: 2px;
+        }
+
+        div:nth-child(1){
+            width: 50px;
+            height: 4px;
+            transition: all .5s ease-in-out;
+            background: black;
+        }
+        div:nth-child(2){
+            width: 30px;
+            height: 4px;
+            transition: all .5s ease-in-out;
+            background: rgb(0, 0, 0);
+        }
+        div:nth-child(3){
+            width: 40px;
+            height: 4px;
+            transition: all .5s ease-in-out;
+            background: rgb(6, 22, 255);
+        }
+    }
+    
+}
+
+.navOpen{
+    overflow: hidden;
+    height: 100%;
+    width: 200vw;
+    z-index: 996;
+    bottom: 0;
+    left: 0;
+    position: fixed;
+    background: black;
+    clip-path: circle(1000px at 30% -10%);
+    -webkit-clip-path:circle(1000px at 30% -10%);
+    transition: all 1s cubic-bezier(0.01075, 0.010, 0, 1.275);
+
+    .videoPlay{
+        display: none;
+    }
+    
+    .navLinks{
+        position: absolute;
+        font-size: 5rem;
+        top: 8%;
+        left: 5%;
+
+        ul{
+            list-style: none;
+            
+            li{
+                
+                letter-spacing: 35px;
+                padding: 5px;
+
+                a{
+                    text-decoration: none;
+                    font-size: 5rem;
+                    color: white;
+                }
+                
+            }
+            li:hover{
+                border-bottom: 4px solid blue;
+                width: 80%;
+            }
+        }
+    }
+
+    .navPhoto{
+        position: absolute;
+        top: 25%;
+        left: 30%;
+
+        .navPhotoContainer{
+            height: 380px;
+            width: 380px;
+            
+        img{
+            height: 100%;
+            width: 100%;
+        }
+
+
+        }
+
+        .navPhotoBg{
+            z-index: -1;
+            position: absolute;
+            top: 15px;
+            left:20px;
+            height: 380px;
+            width: 380px;
+            border: 3px solid blue;
+            
+        }
+    }
+
+    .socialIcons{
+        position: absolute;
+        z-index: 0;
+        top: 80%;
+        left: 15%;
+        width: auto;
+        display: flex;
+        flex-direction: row;
+
+        a{
+            font-size: 2rem;
+            text-decoration: none;
+            padding-right: 50px;
+            color: blue;
+        }
+    }
+}
+
+.navClose{
+    // height: 0px;
+    // width: 0px;
+    transition: all 1s ease-out;
+    clip-path: circle(100px at 60% -10%);
+    -webkit-clip-path:circle(100px at 60% -10%);
+}
+
+.navButton.change{
+
+    div:nth-child(1){
+        width: 50px;
+        height: 4px;
+        background: rgb(255, 255, 255);
+        transition: all .5s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+        transform: rotate(45deg);
+    }
+    div:nth-child(2){
+        width: 0px;
+        transition: all .5s ease-in-out;
+    }
+    div:nth-child(3){
+        width: 50px;
+        height: 4px;
+        background: rgb(6, 22, 255);
+        transition: all .5s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+        transform: rotate(130deg) translate(-10px,5px);
+    }
+
+}
+
+.main{
+    background: rgb(247, 247, 247);
+    height: 100vh;
+    width: 100%;
+
+    .wrapper{
+        padding: 0 30vh;
+        position: relative;
+        height: 100vh;
+    }
+
+    .videoPlay{
+        height: 100%;
+        width: 100%;
+        display: none;
+    }
+
+    .fadeHeading{
+        position: absolute;
+        top: 78%;
+        opacity: .5;
+        left: 75%;
+        color: blue;
+        font-size: 7rem;
+        transform: rotate(90deg);
+        font-family: 'Oswald', sans-serif;
+    }
+
+    .mainHeading{
+        position: absolute;
+        z-index: 99;
+        top: -15%;
+        left: 10%;
+        font-weight: 500;
+        font-size: calc(85px + (280 - 140) * ((100vw - 300px) / (1920 - 300)));
+        height: 100%;
+        text-align: center;
+        z-index: 2;
+        line-height: 220px;
+
+        span{
+            position: absolute;
+            top: 360px;
+            left: 100%;
+            height: 30px;
+            width: 30px;
+            border-radius: 50%;
+            background: blue;
+        }
+    }
+
+    .mainImage{
+        height: 750px;
+        position: absolute;
+        top: 33%;
+        left: 32%;
+        
+        .parallaxImage{
+            height: 750px;
+        }
+
+        img{
+            height: 100%;
+            overflow: hidden;
+        }
+    }
+}
+
+.about{
+    height: 100vh;
+    width: 100%;
+
+    .wrapper{
+        padding: 0 30vh;
+        position: relative;
+        height: 100vh;
+        top: 50%;
+    }
+
+    .aboutContent{
+        text-align: center;
+        font-size: 5rem;
+    }
+
+    .abtName{
+        position: relative;
+        font-size: 5rem;
+    }
+    .abtName::after{
+        content: "";
+        position: absolute;
+        height: 30px;
+        width: 290px;
+        background: blue;
+        top: 64px;
+        opacity: 0.8;
+        left: 1px;
+        z-index: -1;
+    }
+
+    .fadeCircleShape{
+        position: absolute;
+        top: 40px;
+        z-index: -1;
+        left: -225px;
+        height: 600px;
+        width: 650px;
+        background: blue;
+        border-radius: 50%;
+        opacity: 0.7;
+    }
+}
+
+.summary{
+    position: relative;
+    top: 300px;
+    height: 100vh;
+    width: 100%;
+    background: rgb(0, 0, 0);
+    background-attachment: fixed;
+    font-weight: 500;
+    padding: 30px;
+
+    .wrapper{
+        padding: 0 20vh;
+        position: relative;
+        height: 100vh;
+        top: 10%;
+    }
+
+    .summaryHeading{
+        font-size: 2.8rem !important;
+        color: white;
+    }
+
+    .summaryPara{
+       
+        color: rgb(185, 185, 185);
+        position: absolute;
+        top: 250px;
+        font-size: 1.8rem;
+
+        a{
+            color: white;
+        }
+    }
+
+    .summaryName{
+        position: relative;
+        font-size: 1.6rem;
+        text-decoration: none ;
+        
+    }
+    .summaryName::after{
+        content: "";
+        position: absolute;
+        height: 2px;
+        width: 100%;
+        background: rgb(255, 255, 255);
+        top: 34px;
+        left: 1px;
+        z-index: 1;
+    }
+    
+}
+
+.project{
+    top: 0;
+    height: 600vh;
+    width: 100%;
+    background: rgb(247, 247, 247);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='912' height='456' viewBox='0 0 1600 800'%3E%3Cpath fill='%233392ff' d='M1102.5 734.8c2.5-1.2 24.8-8.6 25.6-7.5.5.7-3.9 23.8-4.6 24.5C1123.3 752.1 1107.5 739.5 1102.5 734.8zM1226.3 229.1c0-.1-4.9-9.4-7-14.2-.1-.3-.3-1.1-.4-1.6-.1-.4-.3-.7-.6-.9-.3-.2-.6-.1-.8.1l-13.1 12.3c0 0 0 0 0 0-.2.2-.3.5-.4.8 0 .3 0 .7.2 1 .1.1 1.4 2.5 2.1 3.6 2.4 3.7 6.5 12.1 6.5 12.2.2.3.4.5.7.6.3 0 .5-.1.7-.3 0 0 1.8-2.5 2.7-3.6 1.5-1.6 3-3.2 4.6-4.7 1.2-1.2 1.6-1.4 2.1-1.6.5-.3 1.1-.5 2.5-1.9C1226.5 230.4 1226.6 229.6 1226.3 229.1zM33 770.3C33 770.3 33 770.3 33 770.3c0-.7-.5-1.2-1.2-1.2-.1 0-.3 0-.4.1-1.6.2-14.3.1-22.2 0-.3 0-.6.1-.9.4-.2.2-.4.5-.4.9 0 .2 0 4.9.1 5.9l.4 13.6c0 .3.2.6.4.9.2.2.5.3.8.3 0 0 .1 0 .1 0 7.3-.7 14.7-.9 22-.6.3 0 .7-.1.9-.3.2-.2.4-.6.4-.9C32.9 783.3 32.9 776.2 33 770.3z'/%3E%3Cpath fill='%23583bff' d='M171.1 383.4c1.3-2.5 14.3-22 15.6-21.6.8.3 11.5 21.2 11.5 22.1C198.1 384.2 177.9 384 171.1 383.4zM596.4 711.8c-.1-.1-6.7-8.2-9.7-12.5-.2-.3-.5-1-.7-1.5-.2-.4-.4-.7-.7-.8-.3-.1-.6 0-.8.3L574 712c0 0 0 0 0 0-.2.2-.2.5-.2.9 0 .3.2.7.4.9.1.1 1.8 2.2 2.8 3.1 3.1 3.1 8.8 10.5 8.9 10.6.2.3.5.4.8.4.3 0 .5-.2.6-.5 0 0 1.2-2.8 2-4.1 1.1-1.9 2.3-3.7 3.5-5.5.9-1.4 1.3-1.7 1.7-2 .5-.4 1-.7 2.1-2.4C596.9 713.1 596.8 712.3 596.4 711.8zM727.5 179.9C727.5 179.9 727.5 179.9 727.5 179.9c.6.2 1.3-.2 1.4-.8 0-.1 0-.2 0-.4.2-1.4 2.8-12.6 4.5-19.5.1-.3 0-.6-.2-.8-.2-.3-.5-.4-.8-.5-.2 0-4.7-1.1-5.7-1.3l-13.4-2.7c-.3-.1-.7 0-.9.2-.2.2-.4.4-.5.6 0 0 0 .1 0 .1-.8 6.5-2.2 13.1-3.9 19.4-.1.3 0 .6.2.9.2.3.5.4.8.5C714.8 176.9 721.7 178.5 727.5 179.9zM728.5 178.1c-.1-.1-.2-.2-.4-.2C728.3 177.9 728.4 178 728.5 178.1z'/%3E%3Cg fill='%23FFF'%3E%3Cpath d='M699.6 472.7c-1.5 0-2.8-.8-3.5-2.3-.8-1.9 0-4.2 1.9-5 3.7-1.6 6.8-4.7 8.4-8.5 1.6-3.8 1.7-8.1.2-11.9-.3-.9-.8-1.8-1.2-2.8-.8-1.7-1.8-3.7-2.3-5.9-.9-4.1-.2-8.6 2-12.8 1.7-3.1 4.1-6.1 7.6-9.1 1.6-1.4 4-1.2 5.3.4 1.4 1.6 1.2 4-.4 5.3-2.8 2.5-4.7 4.7-5.9 7-1.4 2.6-1.9 5.3-1.3 7.6.3 1.4 1 2.8 1.7 4.3.5 1.1 1 2.2 1.5 3.3 2.1 5.6 2 12-.3 17.6-2.3 5.5-6.8 10.1-12.3 12.5C700.6 472.6 700.1 472.7 699.6 472.7zM740.4 421.4c1.5-.2 3 .5 3.8 1.9 1.1 1.8.4 4.2-1.4 5.3-3.7 2.1-6.4 5.6-7.6 9.5-1.2 4-.8 8.4 1.1 12.1.4.9 1 1.7 1.6 2.7 1 1.7 2.2 3.5 3 5.7 1.4 4 1.2 8.7-.6 13.2-1.4 3.4-3.5 6.6-6.8 10.1-1.5 1.6-3.9 1.7-5.5.2-1.6-1.4-1.7-3.9-.2-5.4 2.6-2.8 4.3-5.3 5.3-7.7 1.1-2.8 1.3-5.6.5-7.9-.5-1.3-1.3-2.7-2.2-4.1-.6-1-1.3-2.1-1.9-3.2-2.8-5.4-3.4-11.9-1.7-17.8 1.8-5.9 5.8-11 11.2-14C739.4 421.6 739.9 421.4 740.4 421.4zM261.3 590.9c5.7 6.8 9 15.7 9.4 22.4.5 7.3-2.4 16.4-10.2 20.4-3 1.5-6.7 2.2-11.2 2.2-7.9-.1-12.9-2.9-15.4-8.4-2.1-4.7-2.3-11.4 1.8-15.9 3.2-3.5 7.8-4.1 11.2-1.6 1.2.9 1.5 2.7.6 3.9-.9 1.2-2.7 1.5-3.9.6-1.8-1.3-3.6.6-3.8.8-2.4 2.6-2.1 7-.8 9.9 1.5 3.4 4.7 5 10.4 5.1 3.6 0 6.4-.5 8.6-1.6 4.7-2.4 7.7-8.6 7.2-15-.5-7.3-5.3-18.2-13-23.9-4.2-3.1-8.5-4.1-12.9-3.1-3.1.7-6.2 2.4-9.7 5-6.6 5.1-11.7 11.8-14.2 19-2.7 7.7-2.1 15.8 1.9 23.9.7 1.4.1 3.1-1.3 3.7-1.4.7-3.1.1-3.7-1.3-4.6-9.4-5.4-19.2-2.2-28.2 2.9-8.2 8.6-15.9 16.1-21.6 4.1-3.1 8-5.1 11.8-6 6-1.4 12 0 17.5 4C257.6 586.9 259.6 588.8 261.3 590.9z'/%3E%3Ccircle cx='1013.7' cy='153.9' r='7.1'/%3E%3Ccircle cx='1024.3' cy='132.1' r='7.1'/%3E%3Ccircle cx='1037.3' cy='148.9' r='7.1'/%3E%3Cpath d='M1508.7 297.2c-4.8-5.4-9.7-10.8-14.8-16.2 5.6-5.6 11.1-11.5 15.6-18.2 1.2-1.7.7-4.1-1-5.2-1.7-1.2-4.1-.7-5.2 1-4.2 6.2-9.1 11.6-14.5 16.9-4.8-5-9.7-10-14.7-14.9-1.5-1.5-3.9-1.5-5.3 0-1.5 1.5-1.5 3.9 0 5.3 4.9 4.8 9.7 9.8 14.5 14.8-1.1 1.1-2.3 2.2-3.5 3.2-4.1 3.8-8.4 7.8-12.4 12-1.4 1.5-1.4 3.8 0 5.3 0 0 0 0 0 0 1.5 1.4 3.9 1.4 5.3-.1 3.9-4 8.1-7.9 12.1-11.7 1.2-1.1 2.3-2.2 3.5-3.3 4.9 5.3 9.8 10.6 14.6 15.9.1.1.1.1.2.2 1.4 1.4 3.7 1.5 5.2.2C1510 301.2 1510.1 298.8 1508.7 297.2zM327.6 248.6l-.4-2.6c-1.5-11.1-2.2-23.2-2.3-37 0-5.5 0-11.5.2-18.5 0-.7 0-1.5 0-2.3 0-5 0-11.2 3.9-13.5 2.2-1.3 5.1-1 8.5.9 5.7 3.1 13.2 8.7 17.5 14.9 5.5 7.8 7.3 16.9 5 25.7-3.2 12.3-15 31-30 32.1L327.6 248.6zM332.1 179.2c-.2 0-.3 0-.4.1-.1.1-.7.5-1.1 2.7-.3 1.9-.3 4.2-.3 6.3 0 .8 0 1.7 0 2.4-.2 6.9-.2 12.8-.2 18.3.1 12.5.7 23.5 2 33.7 11-2.7 20.4-18.1 23-27.8 1.9-7.2.4-14.8-4.2-21.3l0 0C347 188.1 340 183 335 180.3 333.6 179.5 332.6 179.2 332.1 179.2zM516.3 60.8c-.1 0-.2 0-.4-.1-2.4-.7-4-.9-6.7-.7-.7 0-1.3-.5-1.4-1.2 0-.7.5-1.3 1.2-1.4 3.1-.2 4.9 0 7.6.8.7.2 1.1.9.9 1.6C517.3 60.4 516.8 60.8 516.3 60.8zM506.1 70.5c-.5 0-1-.3-1.2-.8-.8-2.1-1.2-4.3-1.3-6.6 0-.7.5-1.3 1.2-1.3.7 0 1.3.5 1.3 1.2.1 2 .5 3.9 1.1 5.8.2.7-.1 1.4-.8 1.6C506.4 70.5 506.2 70.5 506.1 70.5zM494.1 64.4c-.4 0-.8-.2-1-.5-.4-.6-.3-1.4.2-1.8 1.8-1.4 3.7-2.6 5.8-3.6.6-.3 1.4 0 1.7.6.3.6 0 1.4-.6 1.7-1.9.9-3.7 2-5.3 3.3C494.7 64.3 494.4 64.4 494.1 64.4zM500.5 55.3c-.5 0-.9-.3-1.2-.7-.5-1-1.2-1.9-2.4-3.4-.3-.4-.7-.9-1.1-1.4-.4-.6-.3-1.4.2-1.8.6-.4 1.4-.3 1.8.2.4.5.8 1 1.1 1.4 1.3 1.6 2.1 2.6 2.7 3.9.3.6 0 1.4-.6 1.7C500.9 55.3 500.7 55.3 500.5 55.3zM506.7 55c-.3 0-.5-.1-.8-.2-.6-.4-.7-1.2-.3-1.8 1.2-1.7 2.3-3.4 3.3-5.2.3-.6 1.1-.9 1.7-.5.6.3.9 1.1.5 1.7-1 1.9-2.2 3.8-3.5 5.6C507.4 54.8 507.1 55 506.7 55zM1029.3 382.8c-.1 0-.2 0-.4-.1-2.4-.7-4-.9-6.7-.7-.7 0-1.3-.5-1.4-1.2 0-.7.5-1.3 1.2-1.4 3.1-.2 4.9 0 7.6.8.7.2 1.1.9.9 1.6C1030.3 382.4 1029.8 382.8 1029.3 382.8zM1019.1 392.5c-.5 0-1-.3-1.2-.8-.8-2.1-1.2-4.3-1.3-6.6 0-.7.5-1.3 1.2-1.3.7 0 1.3.5 1.3 1.2.1 2 .5 3.9 1.1 5.8.2.7-.1 1.4-.8 1.6C1019.4 392.5 1019.2 392.5 1019.1 392.5zM1007.1 386.4c-.4 0-.8-.2-1-.5-.4-.6-.3-1.4.2-1.8 1.8-1.4 3.7-2.6 5.8-3.6.6-.3 1.4 0 1.7.6.3.6 0 1.4-.6 1.7-1.9.9-3.7 2-5.3 3.3C1007.7 386.3 1007.4 386.4 1007.1 386.4zM1013.5 377.3c-.5 0-.9-.3-1.2-.7-.5-1-1.2-1.9-2.4-3.4-.3-.4-.7-.9-1.1-1.4-.4-.6-.3-1.4.2-1.8.6-.4 1.4-.3 1.8.2.4.5.8 1 1.1 1.4 1.3 1.6 2.1 2.6 2.7 3.9.3.6 0 1.4-.6 1.7C1013.9 377.3 1013.7 377.3 1013.5 377.3zM1019.7 377c-.3 0-.5-.1-.8-.2-.6-.4-.7-1.2-.3-1.8 1.2-1.7 2.3-3.4 3.3-5.2.3-.6 1.1-.9 1.7-.5.6.3.9 1.1.5 1.7-1 1.9-2.2 3.8-3.5 5.6C1020.4 376.8 1020.1 377 1019.7 377zM1329.7 573.4c-1.4 0-2.9-.2-4.5-.7-8.4-2.7-16.6-12.7-18.7-20-.4-1.4-.7-2.9-.9-4.4-8.1 3.3-15.5 10.6-15.4 21 0 1.5-1.2 2.7-2.7 2.8 0 0 0 0 0 0-1.5 0-2.7-1.2-2.7-2.7-.1-6.7 2.4-12.9 7-18 3.6-4 8.4-7.1 13.7-8.8.5-6.5 3.1-12.9 7.4-17.4 7-7.4 18.2-8.9 27.3-10.1l.7-.1c1.5-.2 2.9.9 3.1 2.3.2 1.5-.9 2.9-2.3 3.1l-.7.1c-8.6 1.2-18.4 2.5-24 8.4-3 3.2-5 7.7-5.7 12.4 7.9-1 17.7 1.3 24.3 5.7 4.3 2.9 7.1 7.8 7.2 12.7.2 4.3-1.7 8.3-5.2 11.1C1335.2 572.4 1332.6 573.4 1329.7 573.4zM1311 546.7c.1 1.5.4 3 .8 4.4 1.7 5.8 8.7 14.2 15.1 16.3 2.8.9 5.1.5 7.2-1.1 2.7-2.1 3.2-4.8 3.1-6.6-.1-3.2-2-6.4-4.8-8.3C1326.7 547.5 1317.7 545.6 1311 546.7z'/%3E%3C/g%3E%3C/svg%3E");
+    background-attachment: fixed;
+
+    .wrapper{
+        padding: 0 20vh;
+        position: relative;
+        height: 100vh;
+        top: 10%;
+    }
+
+    .projectHeading{
+       
+
+        p{
+            padding: 0;
+            margin: 0;
+            font-size: 8rem !important;
+        }
+    }
+
+    .projectItems{
+        height: 700px;
+        text-align: center;
+        margin: 100px 0 50px 0;
+        font-size: 2rem;
+        border-radius: 10px;
+        -webkit-box-shadow: 0px 20px 29px -19px rgba(0,0,0,0.75);
+        -moz-box-shadow: 0px 20px 29px -19px rgba(0,0,0,0.75);
+        box-shadow: 0px 20px 29px -19px rgba(0,0,0,0.75);
+       
+        
+        a{
+            text-decoration: none;
+            color: rgb(92, 92, 92);
+            border-bottom: 1px solid black;
+            font-size: 1.2rem;
+        }
+    }
+
+    .swiper-container {
+        height: 80%;
+        width: 100%;
+        padding: 30px;
+        margin-bottom: 30px;
+
+        .swiper-slide{
+            height: 100%;
+            width: 100%;
+
+            img{
+                height: 100%;
+                width: 100%;
+            }
+        }
+
+        .badlImg{
+            height: 600px;
+
+            img{
+                height: 100%;
+            }
+        }
+    }
+}
+
+.contact{
+    top: 0;
+    height: 100vh;
+    width: 100%;
+    background: black;
+
+    .wrapper{
+        padding: 0 20vh;
+        position: relative;
+        height: 100vh;
+        top: 0;
+    }
+
+    .contactHeading{
+
+        p{
+        font-size: 8rem;
+        color: white;
+        }
+    }
+    .contactForm{
+        padding-top: 50px;
+
+        label{
+            color: rgb(216, 216, 216);
+        }
+    }
+
+    .contactFooter{
+        position: absolute;
+        height: 30vh;
+        width: 100%;
+        background: black;
+        top: 83%;
+        left: 0;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+
+        span{
+            font-size: 2.5rem;
+            padding: 25px;
+            transition: all .1 ease-in-out;
+            animation: 3s footerAnim infinite ease-in-out;
+        }
+
+        @keyframes footerAnim{
+            from{
+                columns: white;
+            }
+            to{
+                color: blue;
+                transform: scale(1.3);
+            }
+        }
+        .socialIcons{
+            height: auto;
+            padding-top: 10px;
+            margin-bottom: 3px;
+
+            a{
+                font-size: 1.5rem;
+                padding-right: 30px;
+            }
+        }
+    }
+}
+
+////////// For Mobiles ////////////////
+
+@media only screen and (max-width: 812px){
+
+  /* CSS Rules Here */
+
+  .transOverlay{
+    
+}
+
+  .header{
+    height: 40vh;
+    background: rgb(247, 247, 247);
+    width: 100%;
+
+
+    nav{
+        width: 100%;
+        height: 100%;
+    }
+
+    .wrapper{
+        position: relative;
+        padding: 15vh 30vh;
+    }
+
+    .navName{
+        position: absolute;
+        top: 35px;
+        left: 10%;
+        
+
+        a{
+            color: black;
+            text-decoration: none !important;
+            font-size: 3rem !important;
+        }
+
+        span{
+            color: rgb(44, 10, 238);
+            font-size: 4rem;
+        }
+    }
+
+    .navButton{
+        position: absolute;
+        z-index: 999;
+        top:50%;
+        left: 82%;
+        cursor: pointer;
+        transition: all 1s ease-in-out;
+
+        div{
+            margin-bottom: 2px;
+        }
+
+        div:nth-child(1){
+            width: 50px;
+            height: 4px;
+            transition: all .5s ease-in-out;
+            background: black;
+        }
+        div:nth-child(2){
+            width: 30px;
+            height: 4px;
+            transition: all .5s ease-in-out;
+            background: rgb(0, 0, 0);
+        }
+        div:nth-child(3){
+            width: 40px;
+            height: 4px;
+            transition: all .5s ease-in-out;
+            background: rgb(6, 22, 255);
+        }
+    }
+    
+}
+
+.navOpen{
+    
+    height: 100vh;
+    width: 100%;
+    z-index: 996;
+    bottom: 0;
+    left: 0;
+    position: fixed;
+    background: black;
+    clip-path: circle(1000px at 50% -10%);
+    -webkit-clip-path:circle(1000px at 50% -10%);
+    transition: all 1s cubic-bezier(0.01075, 0.010, 0, 1.275);
+
+    .videoPlay{
+        display: none;
+    }
+    
+    .navLinks{
+        position: absolute;
+        top: 15%;
+        left: 5%;
+
+        ul{
+            list-style: none;
+            
+            li{
+                
+                letter-spacing: 35px;
+                padding: 50px;
+
+                a{
+                    text-decoration: none;
+                    font-size: 2rem;
+                    color: white;
+
+                   :hover{
+                       border-bottom: none;
+                   }
+                }
+               
+                
+            }
+        }
+    }
+
+    .navPhoto{
+        display: none;
+    }
+
+    .socialIcons{
+        position: absolute;
+        z-index: 0;
+        top: 86%;
+        left: 15%;
+        width: auto;
+        display: flex;
+        flex-direction: row;
+
+        a{
+            font-size: 1.5rem;
+            text-decoration: none;
+            padding-right: 50px;
+            color: blue;
+        }
+    }
+}
+
+.navClose{
+    // height: 0px;
+    // width: 0px;
+    transition: all 1s ease-out;
+    clip-path: circle(0px at 80% -10%);
+    -webkit-clip-path:circle(0px at 80% -10%);
+}
+
+.navButton.change{
+
+    div:nth-child(1){
+        width: 50px;
+        height: 4px;
+        background: rgb(255, 255, 255);
+        transition: all .5s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+        transform: rotate(45deg);
+    }
+    div:nth-child(2){
+        width: 0px;
+        transition: all .5s ease-in-out;
+    }
+    div:nth-child(3){
+        width: 50px;
+        height: 4px;
+        background: rgb(6, 22, 255);
+        transition: all .5s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+        transform: rotate(130deg) translate(-10px,5px);
+    }
+
+}
+
+.main{
+    background: rgb(247, 247, 247);
+    height: 100vh;
+    width: 100%;
+
+    .wrapper{
+        padding: 0 10%;
+        position: relative;
+        height: 100vh;
+    }
+
+    .videoPlay{
+        height: 100%;
+        width: 100%;
+        display: none;
+    }
+
+    .fadeHeading{
+        padding: 0;
+        overflow: hidden;
+        position: absolute;
+        top: 95%;
+        opacity: .5;
+        left: -40px;
+        color: blue;
+        font-size: 3.3rem;
+        transform: rotate(90deg);
+        font-family: 'Oswald', sans-serif;
+    }
+
+    .mainHeading{
+        position: absolute;
+        z-index: 99;
+        top: -1%;
+        left: 10%;
+        font-weight: 600;
+        font-size: calc(55px + (280 - 140) * ((100vw - 300px) / (1920 - 300)));
+        height: 100%;
+        text-align: center;
+        z-index: 2;
+        line-height: 100px;
+
+        span{
+            
+            position: absolute;
+            top: 150px;
+            left: 100%;
+            height: 20px;
+            width: 20px;
+            border-radius: 50%;
+            background: blue;
+        }
+    }
+
+    .mainImage{
+        height: 450px;
+        position: absolute;
+        top: 22%;
+        left: 22%;
+        z-index: 1;
+        
+        .parallaxImage{
+            height: 450px;
+        }
+
+        img{
+            height: 100%;
+            overflow: hidden;
+        }
+    }
+}
+
+.about{
+    height: 100vh;
+    width: 100%;
+
+    .wrapper{
+        padding: 0 10%;
+        position: relative;
+        height: 100vh;
+        top: 30%;
+    }
+
+    .aboutContent{
+        text-align: center;
+        font-size: 3rem;
+    }
+
+    .abtName{
+        position: relative;
+        font-size: 3rem;
+    }
+    .abtName::after{
+        content: "";
+        position: absolute;
+        height: 20px;
+        width: 190px;
+        background: blue;
+        top: 35px;
+        opacity: 0.8;
+        left: 1px;
+        z-index: -1;
+    }
+
+    .fadeCircleShape{
+        position: absolute;
+        top: 190px;
+        z-index: -1;
+        left: -100px;
+        height: 300px;
+        width: 300px;
+        background: blue;
+        border-radius: 50%;
+        opacity: 0.7;
+    }
+}
+
+.summary{
+    position: relative;
+    top: 300px;
+    height: 100vh;
+    width: 100%;
+    background: rgb(0, 0, 0);
+    background-attachment: fixed;
+    font-weight: 500;
+    padding: 30px;
+
+    .wrapper{
+        padding: 0 10%;
+        position: relative;
+        height: 100vh;
+        top: 10%;
+    }
+
+    .summaryHeading{
+        font-size: 1rem !important;
+        color: white;
+    }
+
+    .summaryPara{
+       
+        color: rgb(185, 185, 185);
+        position: absolute;
+        top: 250px;
+        font-size: 1.3rem;
+
+        a{
+            color: white;
+        }
+    }
+
+    .summaryName{
+        position: relative;
+        font-size: 1.35rem;
+        text-decoration: none ;
+        
+    }
+    .summaryName::after{
+        content: "";
+        position: absolute;
+        height: 2px;
+        width: 100%;
+        background: rgb(255, 255, 255);
+        top: 34px;
+        left: 1px;
+        z-index: 1;
+    }
+    
+}
+
+.project{
+    margin: 100px 0;
+    height: 400vh;
+    width: 100%;
+    background: rgb(247, 247, 247);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='912' height='456' viewBox='0 0 1600 800'%3E%3Cpath fill='%233392ff' d='M1102.5 734.8c2.5-1.2 24.8-8.6 25.6-7.5.5.7-3.9 23.8-4.6 24.5C1123.3 752.1 1107.5 739.5 1102.5 734.8zM1226.3 229.1c0-.1-4.9-9.4-7-14.2-.1-.3-.3-1.1-.4-1.6-.1-.4-.3-.7-.6-.9-.3-.2-.6-.1-.8.1l-13.1 12.3c0 0 0 0 0 0-.2.2-.3.5-.4.8 0 .3 0 .7.2 1 .1.1 1.4 2.5 2.1 3.6 2.4 3.7 6.5 12.1 6.5 12.2.2.3.4.5.7.6.3 0 .5-.1.7-.3 0 0 1.8-2.5 2.7-3.6 1.5-1.6 3-3.2 4.6-4.7 1.2-1.2 1.6-1.4 2.1-1.6.5-.3 1.1-.5 2.5-1.9C1226.5 230.4 1226.6 229.6 1226.3 229.1zM33 770.3C33 770.3 33 770.3 33 770.3c0-.7-.5-1.2-1.2-1.2-.1 0-.3 0-.4.1-1.6.2-14.3.1-22.2 0-.3 0-.6.1-.9.4-.2.2-.4.5-.4.9 0 .2 0 4.9.1 5.9l.4 13.6c0 .3.2.6.4.9.2.2.5.3.8.3 0 0 .1 0 .1 0 7.3-.7 14.7-.9 22-.6.3 0 .7-.1.9-.3.2-.2.4-.6.4-.9C32.9 783.3 32.9 776.2 33 770.3z'/%3E%3Cpath fill='%23583bff' d='M171.1 383.4c1.3-2.5 14.3-22 15.6-21.6.8.3 11.5 21.2 11.5 22.1C198.1 384.2 177.9 384 171.1 383.4zM596.4 711.8c-.1-.1-6.7-8.2-9.7-12.5-.2-.3-.5-1-.7-1.5-.2-.4-.4-.7-.7-.8-.3-.1-.6 0-.8.3L574 712c0 0 0 0 0 0-.2.2-.2.5-.2.9 0 .3.2.7.4.9.1.1 1.8 2.2 2.8 3.1 3.1 3.1 8.8 10.5 8.9 10.6.2.3.5.4.8.4.3 0 .5-.2.6-.5 0 0 1.2-2.8 2-4.1 1.1-1.9 2.3-3.7 3.5-5.5.9-1.4 1.3-1.7 1.7-2 .5-.4 1-.7 2.1-2.4C596.9 713.1 596.8 712.3 596.4 711.8zM727.5 179.9C727.5 179.9 727.5 179.9 727.5 179.9c.6.2 1.3-.2 1.4-.8 0-.1 0-.2 0-.4.2-1.4 2.8-12.6 4.5-19.5.1-.3 0-.6-.2-.8-.2-.3-.5-.4-.8-.5-.2 0-4.7-1.1-5.7-1.3l-13.4-2.7c-.3-.1-.7 0-.9.2-.2.2-.4.4-.5.6 0 0 0 .1 0 .1-.8 6.5-2.2 13.1-3.9 19.4-.1.3 0 .6.2.9.2.3.5.4.8.5C714.8 176.9 721.7 178.5 727.5 179.9zM728.5 178.1c-.1-.1-.2-.2-.4-.2C728.3 177.9 728.4 178 728.5 178.1z'/%3E%3Cg fill='%23FFF'%3E%3Cpath d='M699.6 472.7c-1.5 0-2.8-.8-3.5-2.3-.8-1.9 0-4.2 1.9-5 3.7-1.6 6.8-4.7 8.4-8.5 1.6-3.8 1.7-8.1.2-11.9-.3-.9-.8-1.8-1.2-2.8-.8-1.7-1.8-3.7-2.3-5.9-.9-4.1-.2-8.6 2-12.8 1.7-3.1 4.1-6.1 7.6-9.1 1.6-1.4 4-1.2 5.3.4 1.4 1.6 1.2 4-.4 5.3-2.8 2.5-4.7 4.7-5.9 7-1.4 2.6-1.9 5.3-1.3 7.6.3 1.4 1 2.8 1.7 4.3.5 1.1 1 2.2 1.5 3.3 2.1 5.6 2 12-.3 17.6-2.3 5.5-6.8 10.1-12.3 12.5C700.6 472.6 700.1 472.7 699.6 472.7zM740.4 421.4c1.5-.2 3 .5 3.8 1.9 1.1 1.8.4 4.2-1.4 5.3-3.7 2.1-6.4 5.6-7.6 9.5-1.2 4-.8 8.4 1.1 12.1.4.9 1 1.7 1.6 2.7 1 1.7 2.2 3.5 3 5.7 1.4 4 1.2 8.7-.6 13.2-1.4 3.4-3.5 6.6-6.8 10.1-1.5 1.6-3.9 1.7-5.5.2-1.6-1.4-1.7-3.9-.2-5.4 2.6-2.8 4.3-5.3 5.3-7.7 1.1-2.8 1.3-5.6.5-7.9-.5-1.3-1.3-2.7-2.2-4.1-.6-1-1.3-2.1-1.9-3.2-2.8-5.4-3.4-11.9-1.7-17.8 1.8-5.9 5.8-11 11.2-14C739.4 421.6 739.9 421.4 740.4 421.4zM261.3 590.9c5.7 6.8 9 15.7 9.4 22.4.5 7.3-2.4 16.4-10.2 20.4-3 1.5-6.7 2.2-11.2 2.2-7.9-.1-12.9-2.9-15.4-8.4-2.1-4.7-2.3-11.4 1.8-15.9 3.2-3.5 7.8-4.1 11.2-1.6 1.2.9 1.5 2.7.6 3.9-.9 1.2-2.7 1.5-3.9.6-1.8-1.3-3.6.6-3.8.8-2.4 2.6-2.1 7-.8 9.9 1.5 3.4 4.7 5 10.4 5.1 3.6 0 6.4-.5 8.6-1.6 4.7-2.4 7.7-8.6 7.2-15-.5-7.3-5.3-18.2-13-23.9-4.2-3.1-8.5-4.1-12.9-3.1-3.1.7-6.2 2.4-9.7 5-6.6 5.1-11.7 11.8-14.2 19-2.7 7.7-2.1 15.8 1.9 23.9.7 1.4.1 3.1-1.3 3.7-1.4.7-3.1.1-3.7-1.3-4.6-9.4-5.4-19.2-2.2-28.2 2.9-8.2 8.6-15.9 16.1-21.6 4.1-3.1 8-5.1 11.8-6 6-1.4 12 0 17.5 4C257.6 586.9 259.6 588.8 261.3 590.9z'/%3E%3Ccircle cx='1013.7' cy='153.9' r='7.1'/%3E%3Ccircle cx='1024.3' cy='132.1' r='7.1'/%3E%3Ccircle cx='1037.3' cy='148.9' r='7.1'/%3E%3Cpath d='M1508.7 297.2c-4.8-5.4-9.7-10.8-14.8-16.2 5.6-5.6 11.1-11.5 15.6-18.2 1.2-1.7.7-4.1-1-5.2-1.7-1.2-4.1-.7-5.2 1-4.2 6.2-9.1 11.6-14.5 16.9-4.8-5-9.7-10-14.7-14.9-1.5-1.5-3.9-1.5-5.3 0-1.5 1.5-1.5 3.9 0 5.3 4.9 4.8 9.7 9.8 14.5 14.8-1.1 1.1-2.3 2.2-3.5 3.2-4.1 3.8-8.4 7.8-12.4 12-1.4 1.5-1.4 3.8 0 5.3 0 0 0 0 0 0 1.5 1.4 3.9 1.4 5.3-.1 3.9-4 8.1-7.9 12.1-11.7 1.2-1.1 2.3-2.2 3.5-3.3 4.9 5.3 9.8 10.6 14.6 15.9.1.1.1.1.2.2 1.4 1.4 3.7 1.5 5.2.2C1510 301.2 1510.1 298.8 1508.7 297.2zM327.6 248.6l-.4-2.6c-1.5-11.1-2.2-23.2-2.3-37 0-5.5 0-11.5.2-18.5 0-.7 0-1.5 0-2.3 0-5 0-11.2 3.9-13.5 2.2-1.3 5.1-1 8.5.9 5.7 3.1 13.2 8.7 17.5 14.9 5.5 7.8 7.3 16.9 5 25.7-3.2 12.3-15 31-30 32.1L327.6 248.6zM332.1 179.2c-.2 0-.3 0-.4.1-.1.1-.7.5-1.1 2.7-.3 1.9-.3 4.2-.3 6.3 0 .8 0 1.7 0 2.4-.2 6.9-.2 12.8-.2 18.3.1 12.5.7 23.5 2 33.7 11-2.7 20.4-18.1 23-27.8 1.9-7.2.4-14.8-4.2-21.3l0 0C347 188.1 340 183 335 180.3 333.6 179.5 332.6 179.2 332.1 179.2zM516.3 60.8c-.1 0-.2 0-.4-.1-2.4-.7-4-.9-6.7-.7-.7 0-1.3-.5-1.4-1.2 0-.7.5-1.3 1.2-1.4 3.1-.2 4.9 0 7.6.8.7.2 1.1.9.9 1.6C517.3 60.4 516.8 60.8 516.3 60.8zM506.1 70.5c-.5 0-1-.3-1.2-.8-.8-2.1-1.2-4.3-1.3-6.6 0-.7.5-1.3 1.2-1.3.7 0 1.3.5 1.3 1.2.1 2 .5 3.9 1.1 5.8.2.7-.1 1.4-.8 1.6C506.4 70.5 506.2 70.5 506.1 70.5zM494.1 64.4c-.4 0-.8-.2-1-.5-.4-.6-.3-1.4.2-1.8 1.8-1.4 3.7-2.6 5.8-3.6.6-.3 1.4 0 1.7.6.3.6 0 1.4-.6 1.7-1.9.9-3.7 2-5.3 3.3C494.7 64.3 494.4 64.4 494.1 64.4zM500.5 55.3c-.5 0-.9-.3-1.2-.7-.5-1-1.2-1.9-2.4-3.4-.3-.4-.7-.9-1.1-1.4-.4-.6-.3-1.4.2-1.8.6-.4 1.4-.3 1.8.2.4.5.8 1 1.1 1.4 1.3 1.6 2.1 2.6 2.7 3.9.3.6 0 1.4-.6 1.7C500.9 55.3 500.7 55.3 500.5 55.3zM506.7 55c-.3 0-.5-.1-.8-.2-.6-.4-.7-1.2-.3-1.8 1.2-1.7 2.3-3.4 3.3-5.2.3-.6 1.1-.9 1.7-.5.6.3.9 1.1.5 1.7-1 1.9-2.2 3.8-3.5 5.6C507.4 54.8 507.1 55 506.7 55zM1029.3 382.8c-.1 0-.2 0-.4-.1-2.4-.7-4-.9-6.7-.7-.7 0-1.3-.5-1.4-1.2 0-.7.5-1.3 1.2-1.4 3.1-.2 4.9 0 7.6.8.7.2 1.1.9.9 1.6C1030.3 382.4 1029.8 382.8 1029.3 382.8zM1019.1 392.5c-.5 0-1-.3-1.2-.8-.8-2.1-1.2-4.3-1.3-6.6 0-.7.5-1.3 1.2-1.3.7 0 1.3.5 1.3 1.2.1 2 .5 3.9 1.1 5.8.2.7-.1 1.4-.8 1.6C1019.4 392.5 1019.2 392.5 1019.1 392.5zM1007.1 386.4c-.4 0-.8-.2-1-.5-.4-.6-.3-1.4.2-1.8 1.8-1.4 3.7-2.6 5.8-3.6.6-.3 1.4 0 1.7.6.3.6 0 1.4-.6 1.7-1.9.9-3.7 2-5.3 3.3C1007.7 386.3 1007.4 386.4 1007.1 386.4zM1013.5 377.3c-.5 0-.9-.3-1.2-.7-.5-1-1.2-1.9-2.4-3.4-.3-.4-.7-.9-1.1-1.4-.4-.6-.3-1.4.2-1.8.6-.4 1.4-.3 1.8.2.4.5.8 1 1.1 1.4 1.3 1.6 2.1 2.6 2.7 3.9.3.6 0 1.4-.6 1.7C1013.9 377.3 1013.7 377.3 1013.5 377.3zM1019.7 377c-.3 0-.5-.1-.8-.2-.6-.4-.7-1.2-.3-1.8 1.2-1.7 2.3-3.4 3.3-5.2.3-.6 1.1-.9 1.7-.5.6.3.9 1.1.5 1.7-1 1.9-2.2 3.8-3.5 5.6C1020.4 376.8 1020.1 377 1019.7 377zM1329.7 573.4c-1.4 0-2.9-.2-4.5-.7-8.4-2.7-16.6-12.7-18.7-20-.4-1.4-.7-2.9-.9-4.4-8.1 3.3-15.5 10.6-15.4 21 0 1.5-1.2 2.7-2.7 2.8 0 0 0 0 0 0-1.5 0-2.7-1.2-2.7-2.7-.1-6.7 2.4-12.9 7-18 3.6-4 8.4-7.1 13.7-8.8.5-6.5 3.1-12.9 7.4-17.4 7-7.4 18.2-8.9 27.3-10.1l.7-.1c1.5-.2 2.9.9 3.1 2.3.2 1.5-.9 2.9-2.3 3.1l-.7.1c-8.6 1.2-18.4 2.5-24 8.4-3 3.2-5 7.7-5.7 12.4 7.9-1 17.7 1.3 24.3 5.7 4.3 2.9 7.1 7.8 7.2 12.7.2 4.3-1.7 8.3-5.2 11.1C1335.2 572.4 1332.6 573.4 1329.7 573.4zM1311 546.7c.1 1.5.4 3 .8 4.4 1.7 5.8 8.7 14.2 15.1 16.3 2.8.9 5.1.5 7.2-1.1 2.7-2.1 3.2-4.8 3.1-6.6-.1-3.2-2-6.4-4.8-8.3C1326.7 547.5 1317.7 545.6 1311 546.7z'/%3E%3C/g%3E%3C/svg%3E");
+    background-attachment: fixed;
+
+    .wrapper{
+        padding: 0 10%;
+        position: relative;
+        top: 10%;
+    }
+
+    .projectHeading{
+       
+
+        p{
+            margin: 0;
+            font-weight: 500;
+            font-size: 5rem !important;
+        }
+    }
+
+    .projectItems{
+        height: 450px;
+        text-align: center;
+        margin: 80px 0 50px 0;
+        font-size: 1rem;
+        border-radius: 10px;
+        -webkit-box-shadow: 0px 20px 29px -19px rgba(0,0,0,0.75);
+        -moz-box-shadow: 0px 20px 29px -19px rgba(0,0,0,0.75);
+        box-shadow: 0px 20px 29px -19px rgba(0,0,0,0.75);
+       
+        
+        a{
+            text-decoration: none;
+            color: rgb(92, 92, 92);
+            border-bottom: 1px solid black;
+            font-size: 1rem;
+        }
+    }
+
+    .swiper-container {
+        height: 80%;
+        width: 100%;
+        padding: 30px;
+        margin-bottom: 10px;
+
+        .swiper-slide{
+            height: 100%;
+            width: 100%;
+
+            img{
+                height: 100%;
+                width: 100%;
+            }
+        }
+
+        .badlImg{
+            height: 500px;
+
+            img{
+                height: 100%;
+            }
+        }
+    }
+}
+
+.contact{
+    min-height: 150vh;
+    width: 100%;
+    background: black;
+    position: relative;
+
+    .wrapper{
+        padding: 0 10%;
+        height: 100vh;
+        top: 0;
+    }
+
+    .contactHeading{
+
+        p{
+        font-size: 5rem;
+        color: white;
+        }
+    }
+    .contactForm{
+        padding-top: 50px;
+
+        label{
+            color: rgb(216, 216, 216);
+        }
+    }
+
+    .contactFooter{
+        position: absolute;
+        top: 130%;
+        left: 0;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        align-content: center;
+
+        span{
+            padding: 10px 0;
+            overflow: hidden;
+            width: 70%;
+            margin-left:50px; 
+            font-size: 2.5rem;
+            transition: all .1 ease-in-out;
+            animation: 3s footerAnim infinite ease-in-out;
+        }
+
+        @keyframes footerAnim{
+            from{
+                columns: white;
+            }
+            to{
+                color: blue;
+                transform: scale(1.3);
+            }
+        }
+        .socialIcons{
+            
+
+            a{
+                font-size: 1.5rem;
+                padding-right: 30px;
+            }
+        }
+    }
+}
+
+}
